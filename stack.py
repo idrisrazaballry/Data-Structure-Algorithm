@@ -1,3 +1,33 @@
+# Implementation of stack without any limited size
+
+# class STACK:
+#     def __init__(self):
+#         self.s1 = []
+
+#     def push(self, val):
+#         self.s1.append(val)
+    
+#     def pop(self):
+#         self.s1.pop()
+
+#     def display(self):
+#         if len(self.s1)!=0:
+#             for i in range(len(self.s1)-1, -1, -1):
+#                 print(self.s1[i])
+#         else:
+#             print("No elements in stack")
+    
+#     def peek(self):
+#         print(self.s1[-1])
+
+# st1=STACK()
+# st1.push(10)
+# st1.display()
+# st1.peek()
+# st1.pop()
+# st1.display()
+
+
 ''' Implementation of stack with limited size '''
 
 class STACK:
