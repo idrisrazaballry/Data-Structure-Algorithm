@@ -1,35 +1,106 @@
-# WAP to create a single linked list inside a stack DS
+'''WAP to solve the given expression into postfix evaluation'''
 
-class node:
-    def __init__(self, data):
-        self.data = data
-        self.addr = None
+# def postfix_eval(expression):
+#     stack = []
 
-class stack_linked_list:
-    def __init__(self):
-        self.head = None
+#     for char in expression:
+#         if ord(char) >= 49 and ord(char) <=57:
+#             stack.append(int(char))
+#         else:
+#             n2 = stack.pop()
+#             n1 = stack.pop()
 
+#             if char == "+":
+#                 stack.append((n1+n2))
+#             elif char == "-":
+#                 stack.append((n1-n2))
+#             elif char == "*":
+#                 stack.append((n1*n2))
+#             elif char == "/":
+#                 stack.append((n1/n2))
+#             elif char == "^":
+#                 stack.append((n1**n2))
+#     return stack.pop()
+
+# exp='231*+'
+
+# print("Postfix evaluation of :", exp)
+# print(postfix_eval(exp))
+
+
+''' Alex is tried to arrange his text books in a book shelf, that shelf able to take 
+    only limited number of books then immediately arrange his books in a new shelf 
+    automatically.
+
+    Now consider arrangement of books in a stack if one stack is reached maximum size
+    immediately create new stack and push the books to newly created stack
+ '''
+
+class StackInstack:
+    def __init__(self, maxSize):
+        self.maxSize = maxSize
+        self.stack = []
+    
     def push(self, val):
-        newNode = node(val)
-        if self.head is None:
-            self.head = newNode
+        if len(self.stack) > 0 and len(self.stack[-1]) < self.maxSize:
+            self.stack[-1].append(val)
         else:
-            newNode.addr = self.head
-            self.head = newNode
-    
+            self.stack.append([val])
+
     def display(self):
-        if self.head is None:
-            print("No nodes to display")
+        print(self.stack)
+
+    def pop(self):
+        if self.stack == None:
+            print("No elements in the stack")
         else:
-            temp = self.head
-            while temp:
-                print(temp.data)
-                temp = temp.addr
-            print()
+            self.stack[-1].pop()
     
-    def peek(self):
-        if self.head is None:
-            print("No elements to peek")
+    def popAt(self,stackNum):
+        if stackNum > 0 and stackNum < len(self.stack):
+            self.stack[stackNum - 1].pop()
         else:
-            print(self.head.data)
+            print("Stack number doesn't exists")
+    
+    def pushAt(self,stackNum, val):
+        if stackNum > 0 and stackNum < len(self.stack):
+            if len(self.stack[stackNum - 1]) == self.maxSize:
+                print("Stack is full")
+            else:
+                self.stack[stackNum - 1].append(val)
+        else:
+            print("Stack number doesn't exists")
+
+    def peek(self):
+        if self.stack == None:
+            print("No elements in the stack")
+        else:
+            print(self.stack[-1])
+
+    def peekAt(self):
+        pass
+
+stk = StackInstack(4)
+stk.push("math")
+stk.push("science")
+stk.push("socila science")
+stk.push("m1")
+stk.push("m2")
+stk.push("m3")
+stk.push("OS")
+stk.display()
+print()
+stk.push("Web")
+stk.push("HTML")
+stk.push("CSS")
+stk.push("JS")
+stk.display()
+print()
+stk.pop()
+stk.display()
+print()
+stk.popAt(2)
+stk.display()
+stk.popAt(4)
+stk.display()
 
