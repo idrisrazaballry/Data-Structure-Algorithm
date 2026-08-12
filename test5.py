@@ -15,7 +15,8 @@ def is_balanced(s1):
     return len(stack) == 0
 
 
-s1 = '([{}])'
+# s1 = '([{}])'
+s1 = '({}])'
 if is_balanced(s1):
     print("Balanced")
 else:
