@@ -1,0 +1,2 @@
+def greedyAlgo():
+    pass
